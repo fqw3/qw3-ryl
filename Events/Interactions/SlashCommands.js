@@ -18,26 +18,39 @@ module.exports = {
         content: 'Outdated command',
         ephemeral: true,
       });
-    let qw3 = ['731436868964712449'];
+    let qw3 = ['7314368689647124491'];
     let userID = interaction.user.id;
     let noMsg = '**You are not allowed to use this command**';
     if (interaction.guild === null) {
       return interaction.reply({ content: "**You can't use commands on dm**", ephemeral: true });
     }
-    if (command.developer === true && !qw3.includes(staffID)) {
+    if (command.developer === true && qw3.includes(userID) === false) {
       return interaction.reply({
         content: '**This command is only available for qw3**',
       });
     }
-    if (command.developer && qw3.includes(userID) || interaction.guild.ownerId === userID) {
-      command.execute(interaction, client);
-    } else {
+
+    // 
+    if (
+      typeof (await db.get(`guild.${interaction.guild.id}.staff`)) !== undefined
+    ) {
       if (
-        typeof (await db.get(`guild.${interaction.guild.id}.staff`)) !== 'object' ||
-        !Object.values(await db.get(`guild.${interaction.guild.id}.staff`)).includes(userID)
+        qw3.includes(userID) === false
       ) {
+        if (
+          userID !== interaction.guild.ownerId
+        ) {
+          if (Object.values(await db.get(`guild.${interaction.guild.id}.staff`)).includes(userID) === false && userID !== interaction.guild.ownerId) {
+            return interaction.reply({ content: noMsg });
+          }
+        }
+      }
+    } else {
+      if (Object.values(await db.get(`guild.${interaction.guild.id}.staff`)).includes(userID) === false && userID !== interaction.guild.ownerId) {
         return interaction.reply({ content: noMsg });
       }
     }
+    // 
+      command.execute(interaction, client);
   },
 };
