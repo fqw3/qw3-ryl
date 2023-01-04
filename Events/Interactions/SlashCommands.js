@@ -18,7 +18,7 @@ module.exports = {
         content: 'Outdated command',
         ephemeral: true,
       });
-    let qw3 = ['7314368689647124491'];
+    let qw3 = ['731436868964712449'];
     let userID = interaction.user.id;
     let noMsg = '**You are not allowed to use this command**';
     if (interaction.guild === null) {

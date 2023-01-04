@@ -29,7 +29,7 @@ module.exports = {
    * @param {ChatInputCommandInteraction} interaction
    */
   async execute(interaction) {
-    let lastMessageC = await db.get(`guild.${interaction.guild.id}.lastMessage.alliance`);
+    let lastMessageC = await db.get(`guild.${interaction.guild.id}.lastMessage.enemies`);
     interaction.guild.channels.cache
       .get(lastMessageC.channel)
       .messages.fetch(lastMessageC.message)
@@ -44,7 +44,7 @@ module.exports = {
         // const isEmbed = interaction.options.getBoolean('embed');
         let lastMessage = await db.get(`guild.${interaction.guild.id}.lastMessage.enemies`);
         if (!lastMessage?.channel || !lastMessage) {
-          interaction.reply('**Set a channel by using </send_enemies:1058807787376873622> **');
+          return interaction.reply('**Set a channel by using </send_enemies:1058807787376873622> **');
         } else if (!lastMessage.message) {
           interaction.guild.channels.cache
             .get(lastMessage.channel)
@@ -97,7 +97,7 @@ ${mention}`;
         }
       })
       .catch(async (err) => {
-        return interaction.reply(`**There is already an alliance message here <#${lastMessageC.channel}>**`);
+        return interaction.reply('**Set a channel by using </send_enemies:1058807787376873622> **');
       });
     // interaction.guild.channels.cache
     //   .get(lastMessage.channel)
