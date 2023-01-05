@@ -1,8 +1,8 @@
 {
-  "name": "discordjs",
+  "name": "qw3-ryl-bot",
   "version": "1.0.0",
-  "main": "src/index.js",
-  "author": "Jake Runzer",
+  "main": "index.js",
+  "author": "Faisal_qw3",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon .",

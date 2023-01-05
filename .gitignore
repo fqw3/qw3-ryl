@@ -22,3 +22,6 @@ yarn-debug.log*
 yarn-error.log*
 
 test.js
+send.js
+send2.js
+add.js
