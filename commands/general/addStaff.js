@@ -23,7 +23,7 @@ module.exports = {
      * @param {ChatInputCommandInteraction} interaction
      */
     async execute(interaction) {
-        let staffID = interaction.options.getUser("staff_name").id;
+        let staffID = interaction.options.getUser("staff_name");
         if (
             typeof (await db.get(`guild.${interaction.guild.id}.staff`)) !==
                 "object" ||
@@ -33,11 +33,11 @@ module.exports = {
         ) {
             db.push(`guild.${interaction.guild.id}.staff`, staffID);
             interaction.reply({
-                content: `**Added ${staffID.name} to the staff list**`,
+                content: `**Added ${staffID.user.username} to the staff list**`,
             });
         } else {
             interaction.reply({
-                content: `**${staffID.name} is already in the staff list**`,
+                content: `**${staffID.user.username} is already in the staff list**`,
             });
         }
     },
