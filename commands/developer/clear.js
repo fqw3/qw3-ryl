@@ -7,6 +7,7 @@ const db = new QuickDB({ filePath: "commands/general/json.sqlite" });
 const hasValueDeep = require("../../utils/checkObject");
 
 module.exports = {
+    developer: true,
     data: new SlashCommandBuilder()
         .setName("clear")
         .setDescription("Clear All")
