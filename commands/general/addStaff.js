@@ -29,9 +29,9 @@ module.exports = {
                 "object" ||
             !Object.values(
                 await db.get(`guild.${interaction.guild.id}.staff`)
-            ).includes(staffID)
+            ).includes(staffID.id)
         ) {
-            db.push(`guild.${interaction.guild.id}.staff`, staffID);
+            db.push(`guild.${interaction.guild.id}.staff`, staffID.id);
             interaction.reply({
                 content: `**Added ${staffID.username} to the staff list**`,
             });
