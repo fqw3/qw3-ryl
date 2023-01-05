@@ -33,11 +33,11 @@ module.exports = {
         ) {
             db.push(`guild.${interaction.guild.id}.staff`, staffID);
             interaction.reply({
-                content: `**Added ${staffID.username} to the staff list**`,
+                content: `**Added ${staffID.user.username} to the staff list**`,
             });
         } else {
             interaction.reply({
-                content: `**${staffID.username} is already in the staff list**`,
+                content: `**${staffID.user.username} is already in the staff list**`,
             });
         }
     },
