@@ -33,7 +33,7 @@ module.exports = {
         ) {
             db.push(`guild.${interaction.guild.id}.staff`, staffID);
             interaction.reply({
-                content: `**Added <@${staffID}> to the staff list**`,
+                content: `**Added ${staffID.username} to the staff list**`,
             });
         } else {
             interaction.reply({
