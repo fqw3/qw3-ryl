@@ -37,7 +37,7 @@ module.exports = {
             });
         } else {
             interaction.reply({
-                content: `**<@${staffID}> is already in the staff list**`,
+                content: `**${staffID.username} is already in the staff list**`,
             });
         }
     },
